@@ -14,7 +14,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(function(req,res,next){
     res.locals.showTests=app.get('env')!=='production' && req.query.test==='1';
     next();
-})
+});
 
 app.use(express.static(__dirname+'/public'));
 app.get('/',function(req,res){
@@ -29,13 +29,13 @@ app.get('/about',function(req,res){
 //定制404页面
 app.use(function(req,res,next){
     res.status(404);
-    res.render('404')
+    res.render('404');
 });
 //定制500页面
 app.use(function(err,req,res,next){
     console.log(err.stack);
     res.status(500);
-    res.render('500')
+    res.render('500');
 });
 
 
